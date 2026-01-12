@@ -2,6 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseConfig {
+  // It's strongly recommended to load the API key from a secure source,
+  // such as environment variables, rather than hardcoding it.
+  // Use --dart-define=FIREBASE_API_KEY=YOUR_API_KEY
+  static const String _apiKey = String.fromEnvironment('FIREBASE_API_KEY');
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
@@ -22,7 +27,7 @@ class FirebaseConfig {
 
   // Web Configuration - YOUR ACTUAL FIREBASE PROJECT
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAGPIvZvdbyrXwRJonYmSZvUHhGEmapec8',
+    apiKey: _apiKey,
     appId: '1:238745148522:web:91d07c07f4edf09026be13',
     messagingSenderId: '238745148522',
     projectId: 'forexcompanion-e5a28',
@@ -33,7 +38,7 @@ class FirebaseConfig {
 
   // Android Configuration
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAGPIvZvdbyrXwRJonYmSZvUHhGEmapec8',
+    apiKey: _apiKey,
     appId: '1:238745148522:android:YOUR_ANDROID_APP_ID',
     messagingSenderId: '238745148522',
     projectId: 'forexcompanion-e5a28',
@@ -42,7 +47,7 @@ class FirebaseConfig {
 
   // iOS Configuration  
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAGPIvZvdbyrXwRJonYmSZvUHhGEmapec8',
+    apiKey: _apiKey,
     appId: '1:238745148522:ios:YOUR_IOS_APP_ID',
     messagingSenderId: '238745148522',
     projectId: 'forexcompanion-e5a28',
@@ -52,8 +57,8 @@ class FirebaseConfig {
 
   // macOS Configuration
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAGPIvZvdbyrXwRJonYmSZvUHhGEmapec8',
-    appId: '1:238745148522:ios:YOUR_IOS_APP_ID',
+    apiKey: _apiKey,
+    appId: '1:238745148522:macos:YOUR_MACOS_APP_ID',
     messagingSenderId: '238745148522',
     projectId: 'forexcompanion-e5a28',
     storageBucket: 'forexcompanion-e5a28.firebasestorage.app',

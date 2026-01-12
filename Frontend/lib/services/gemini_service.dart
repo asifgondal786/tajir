@@ -2,11 +2,19 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'dart:convert';
 
 class GeminiService {
-  static const String _apiKey = 'AIzaSyBRrf3oC4E0p9SgjLJg78AFfdWtRgVyqvE';
+  // It's strongly recommended to load the API key from a secure source,
+  // such as environment variables, rather than hardcoding it.
+  // Use --dart-define=GEMINI_API_KEY=YOUR_API_KEY
+  static const String _apiKey = String.fromEnvironment('GEMINI_API_KEY');
+
   late final GenerativeModel _model;
   late final GenerativeModel _chatModel;
 
   GeminiService() {
+    if (_apiKey.isEmpty) {
+      throw Exception(
+          'GEMINI_API_KEY is not set. Use --dart-define=GEMINI_API_KEY=YOUR_API_KEY');
+    }
     _model = GenerativeModel(
       model: 'gemini-pro',
       apiKey: _apiKey,
